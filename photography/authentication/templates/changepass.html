@@ -1,0 +1,191 @@
+{% extends "root.html" %}
+{% load static %}
+
+{% block title %} Change Password {% endblock title %}
+
+{% block head %}
+<style>
+
+/* ===== LAYOUT ===== */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.dashboard {
+    display: flex;
+    width: 100%;
+}
+
+/* ===== RIGHT COLUMN ===== */
+.right-column {
+    margin-top: -700px;
+    margin-left: 250px;
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    height: 700px;
+    display: block;
+    background: #0f0f0f;
+}
+
+/* ===== FORM CONTAINER ===== */
+.form-container {
+    background: #000000;
+    padding: 45px;
+    border-radius: 14px;
+    box-shadow: 0 0 25px rgba(0, 200, 83, 0.25);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    font-family: "Segoe UI", sans-serif;
+    margin: 50px auto;
+}
+
+/* ===== HEADING ===== */
+.form-container .chng {
+    font-size: 26px;
+    color: #00c853;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+/* ===== INPUT GROUP ===== */
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 6px;
+    color: #cfcfcf;
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 95%;
+    padding: 12px;
+    font-size: 15px;
+    border: 1px solid #2e2e2e;
+    border-radius: 6px;
+    outline: none;
+    background: #121212;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #00c853;
+    box-shadow: 0 0 6px rgba(0, 200, 83, 0.6);
+}
+
+/* ===== BUTTON ===== */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: #000000;
+    background: #00c853;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #00a846;
+}
+
+/* ===== ERROR TEXT ===== */
+.chng-error {
+    color: #ff5252;
+    font-size: 14px;
+}
+
+/* ===== ALERT ===== */
+.custom-alert {
+    padding: 15px 20px;
+    margin: 15px 0;
+    border-radius: 6px;
+    position: relative;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+}
+
+.custom-alert.error {
+    background: rgba(255, 82, 82, 0.15);
+    color: #ff5252;
+    border-left: 4px solid #ff5252;
+}
+
+/* ===== CLOSE BUTTON ===== */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    color: #ff5252;
+    font-size: 26px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #ff1744;
+}
+
+</style>
+{% endblock head %}
+
+{% block body %}
+
+{% include "includes/sideandscroll.html" %}
+
+{% block hero %}
+
+<div class="dashboard">
+    <div class="right-column">
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="custom-alert error">
+            {{ message }}
+            <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <div class="form-container">
+            <p class="chng">Change Password</p>
+
+            <form action="" method="post" novalidate>
+                {% csrf_token %}
+
+                <span class="chng-error">
+                    {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                    <p class="non.error_field">{{ error }}</p>
+                    {% endfor %}
+                    {% endif %}
+                </span>
+
+                <div class="input-group">
+                    {% for fm in form %}
+                    {{ fm.label_tag }}
+                    <span class="chng-error">{{ fm.errors|striptags }}</span>
+                    {{ fm }}
+                    <br><br>
+                    {% endfor %}
+                </div>
+
+                <button type="submit" class="submit-btn">Save</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock hero %}
+{% endblock body %}

@@ -1,0 +1,286 @@
+{% extends "root.html" %}
+{% load static %}
+
+{% block title %} Home {% endblock title %}
+
+{% block head %}
+<style>
+
+/* ================= THEME ================= */
+
+:root{
+    --bg-dark:#05010d;
+    --card-bg:rgba(15,2,26,0.85);
+    --accent:#3aa9ff;
+    --accent-soft:rgba(58,169,255,0.35);
+    --text-muted:#b0b0b0;
+    --border-soft:rgba(58,169,255,0.4);
+}
+
+body{
+    background:radial-gradient(circle at center,#0f1a2e 0%,#05010d 100%);
+    background-attachment:fixed;
+    color:white;
+}
+
+/* ================= SLIDE 1 ================= */
+
+.container-1{
+    height:618px;
+    margin-top:150px;
+}
+
+.photography-img{
+    width:550px;
+    height:630px;
+}
+
+.photography-img img{
+    width:120%;
+    height:100%;
+    filter:drop-shadow(0 0 40px var(--accent));
+}
+
+.text{
+    float:right;
+    width:50%;
+    margin-top:100px;
+    padding-right: 15px;
+}
+
+.text1 p{
+    text-align:center;
+    font-size:50px;
+    font-weight:bold;
+    margin:10px;
+    background:linear-gradient(to right,#ffffff,var(--accent));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+h2{
+    text-align:center;
+    margin: 10px;
+    color:var(--accent);
+}
+
+h4{
+    text-align:center;
+    margin: 25px;
+    color:var(--text-muted);
+}
+
+.container{
+    text-align:center;
+    margin-top:20px;
+}
+
+.view-now{
+    background:linear-gradient(135deg,var(--accent),#6fd1ff);
+    border:none;
+    padding:12px 28px;
+    border-radius:10px;
+    font-weight:bold;
+    box-shadow:0 0 30px var(--accent-soft);
+    transition:0.3s;
+}
+
+.view-now a{
+    color:white;
+    text-decoration:none;
+}
+
+.view-now:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 45px var(--accent);
+}
+
+/* ================= SLIDE 3 ================= */
+
+.container-3{
+    margin-top:140px;
+}
+
+.slide-3 h1{
+    text-align:center;
+    font-size: 50px;
+    background:linear-gradient(to right,#ffffff,var(--accent));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.mgn-container-3{
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    padding:40px;
+}
+
+.box-1,.box-2,.box-3{
+    background:var(--card-bg);
+    backdrop-filter:blur(16px);
+    padding:40px;
+    border-radius:24px;
+    border:1px solid var(--border-soft);
+    box-shadow:
+        0 35px 80px rgba(0,0,0,0.75),
+        0 0 40px var(--accent-soft);
+}
+
+.box-1 h1,.box-2 h1,.box-3 h1{
+    text-align: center;
+    margin: 5px;
+    color:var(--accent);
+}
+
+.box-1 p,.box-2 p,.box-3 p{
+    color:var(--text-muted);
+}
+
+.box-img-1 img,
+.box-img-2 img,
+.box-img-3 img{
+    margin-top:30px;
+    display: flex;
+    justify-self: center;
+    filter:drop-shadow(0 0 25px var(--accent));
+}
+
+/* ================= SLIDE 4 ================= */
+
+.container-4{
+    margin-top:120px;
+}
+
+.slide-4 h1{
+    text-align:center;
+    font-size: 50px;
+    background:linear-gradient(to right,#ffffff,var(--accent));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+table{
+    width:70%;
+    margin:80px auto;
+    border-collapse:collapse;
+    background:var(--card-bg);
+    backdrop-filter:blur(16px);
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:
+        0 45px 95px rgba(0,0,0,0.85),
+        0 0 60px var(--accent-soft);
+}
+
+td,th{
+    border:1px solid var(--border-soft);
+    padding:25px;
+}
+
+.p-colour{
+    color:var(--text-muted);
+}
+
+.img-frant img{
+    filter:drop-shadow(0 0 25px var(--accent));
+    display: flex;
+    justify-self: center;
+}
+
+</style>
+{% endblock head %}
+
+{% block body %}
+
+<!-- ================= SLIDE 1 ================= -->
+<div class="container-1">
+    <div class="text">
+        <div class="text1">
+             <p>TURNING MOMENTS</p>
+            <p>INTO MEMORIES</p>
+            <hr>
+        </div>
+        <h4><i><u>Developed by</u></i></u></h4>
+        <h2>KUNAL VISHWAKARMA</h2>
+        <p style="text-align:center;">&</p>
+        <h2>RAJ VERMA</h2>
+
+        <div class="container">
+            <button class="view-now">
+                <a href="{% url 'all_pic' %}">VIEW NOW ALL PICTURES</a>
+            </button>
+        </div>
+    </div>
+
+    <div class="photography-img">
+        <img src="{% static 'media_file/Images/photoshot-man.png' %}">
+    </div>
+</div>
+
+<!-- ================= SLIDE 3 ================= -->
+<div class="container-3">
+    <div class="slide-3">
+        <h1>OFFERS</h1>
+    </div>
+
+    <div class="mgn-container-3">
+        <div class="box-1">
+            <h1>PORTRAIT SET</h1>
+            <p>Professional shoot • Editing • HD Images • Album</p>
+            <div class="box-img-1">
+                <img src="{% static 'media_file/Images/photo-1.png' %}">
+            </div>
+        </div>
+
+        <div class="box-2">
+            <h1>COUPLE SET</h1>
+            <p>Creative poses • Location scouting • Premium edits</p>
+            <div class="box-img-2">
+                <img src="{% static 'media_file/Images/photo-2.png' %}">
+            </div>
+        </div>
+
+        <div class="box-3">
+            <h1>FASHION SET</h1>
+            <p>Studio lighting • Model direction • Magazine look</p>
+            <div class="box-img-3">
+                <img src="{% static 'media_file/Images/photo-3.png' %}">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================= SLIDE 4 ================= -->
+<div class="container-4">
+    <div class="slide-4">
+        <h1>EVERY PICTURE HAS A STORY TO TELL</h1>
+    </div>
+
+    <table>
+        <tr>
+            <td class="p-colour">
+                Photography is the art of observing deeply. A single glance, a subtle emotion, or a quiet moment can reveal powerful stories hidden beneath the surface. This frame captures introspection and emotion, reminding us that beauty often lies in the smallest details.
+            </td>
+            <td class="img-frant">
+                <img src="{% static 'media_file/Images/photo-1-4.png' %}" width="220">
+            </td>
+            <td class="p-colour">
+                Human connection is the heart of every story. This frame captures love, warmth, and togetherness, freezing a moment of genuine emotion. It reminds us that photographs keep our most precious relationships alive forever.
+            </td>
+        </tr>
+        <tr>
+            <td class="img-frant">
+                <img src="{% static 'media_file/Images/photo-2-4.png' %}" width="220">
+            </td>
+            <td class="p-colour">
+                In the stillness of nature, moments unfold naturally. This image reflects calm, solitude, and connection with surroundings, where time seems to slow down. It shows how photography preserves peaceful memories that words cannot describe.
+            </td>
+            <td class="img-frant">
+                <img src="{% static 'media_file/Images/photo-4-4.png' %}" width="180">
+            </td>
+        </tr>
+    </table>
+</div>
+
+{% endblock body %}

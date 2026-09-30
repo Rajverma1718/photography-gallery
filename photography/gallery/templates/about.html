@@ -1,0 +1,237 @@
+{% extends "root.html" %}
+{% load static %}
+
+{% block title %} About_us {% endblock title %}
+
+{% block head %}
+<style>
+:root {
+    --primary-bg: #05010d;
+    --card-bg: rgba(15, 2, 26, 0.85);
+
+    /* BLUE GLOW TOKENS */
+    --accent-blue: #3aa9ff;
+    --accent-blue-soft: rgba(58, 169, 255, 0.35);
+
+    /* SECONDARY (keep subtle) */
+    --accent-purple: #8f6bff;
+
+    --border-color: rgba(58, 169, 255, 0.35);
+    --text-muted: #b0b0b0;
+    --glass-inner: rgba(255, 255, 255, 0.05);
+}
+
+/* BACKGROUND */
+body {
+    background: radial-gradient(circle at center, #0f1a2e 0%, #05010d 100%);
+    background-attachment: fixed;
+    color: #ffffff;
+}
+
+/* SECTION */
+.about-section {
+    padding: 90px 20px 140px;
+    text-align: center;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* INTRO */
+.intro {
+    font-size: 18px;
+    margin-bottom: 70px;
+    color: var(--text-muted);
+    line-height: 2;
+}
+
+.intro span {
+    background: linear-gradient(to right, #ffffff, var(--accent-blue));
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+/* TEAM */
+.team {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 90px;
+}
+
+/* GLASS CARD */
+.member {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    padding: 32px 26px;
+    width: 230px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,0.75),
+        0 0 30px var(--accent-blue-soft),
+        inset 0 0 14px var(--glass-inner);
+}
+
+/* BLUE SHINE SWEEP */
+.member::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(58,169,255,0.12),
+        transparent
+    );
+    transition: 0.6s;
+}
+
+.member:hover::before {
+    left: 100%;
+}
+
+.member:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        0 45px 95px rgba(0,0,0,0.85),
+        0 0 55px rgba(58,169,255,0.65);
+}
+
+/* PROFILE IMAGE */
+.member img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-bottom: 16px;
+    border: 2px solid var(--accent-blue);
+
+    box-shadow:
+        0 0 0 6px rgba(58,169,255,0.22),
+        0 0 35px rgba(58,169,255,0.85),
+        0 20px 40px rgba(0,0,0,0.7);
+}
+
+.member h3 {
+    margin: 12px 0 6px;
+    font-size: 16.5px;
+    font-weight: 600;
+}
+
+.member p {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* STRONGER BLUE DIVIDER */
+.glow-divider {
+    height: 3px;
+    width: 72%;
+    margin: 0 auto 90px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--accent-blue),
+        transparent
+    );
+    box-shadow:
+        0 0 25px rgba(58,169,255,0.9),
+        0 0 60px rgba(58,169,255,0.6);
+}
+
+/* MISSION CARD */
+.mission {
+    background: var(--card-bg);
+    backdrop-filter: blur(18px);
+    border-radius: 26px;
+    border: 1px solid var(--border-color);
+    padding: 55px 50px;
+    position: relative;
+
+    box-shadow:
+        0 45px 95px rgba(0,0,0,0.85),
+        0 0 70px rgba(58,169,255,0.55),
+        inset 0 0 18px var(--glass-inner);
+}
+
+/* BLUE SPOTLIGHT */
+.mission::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: radial-gradient(
+        circle at top,
+        rgba(58,169,255,0.35),
+        transparent 65%
+    );
+    pointer-events: none;
+}
+
+.mission h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #ffffff, var(--accent-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1.4px;
+    font-weight: 700;
+}
+
+.mission p {
+    color: var(--text-muted);
+    line-height: 2;
+    font-size: 15.5px;
+}
+</style>
+{% endblock head %}
+
+{% block body %}
+<div class="container-1" style="margin-top: 80px;">
+    <section class="about-section">
+        <div class="container">
+
+            <p class="intro">
+                <span>About Our Platform </span> — built to securely manage and protect your photographs.
+
+            <div class="team">
+                <div class="member">
+                    <img src="{% static 'media_file/Images/about_kunal1.jpeg' %}">
+                    <h3>Kunal <br> Vishwakarma</h3>
+                    <p>Developer</p>
+                </div>
+
+                <div class="member">
+                    <img src="{% static 'media_file/Images/Photo.jpg' %}">
+                    <h3>Raj <br> Verma</h3>
+                    <p>Developer</p>
+                </div>
+            </div>
+
+            <div class="glow-divider"></div>
+
+            <div class="mission">
+                <h2>Our Mission</h2>
+                <p>
+                   Our mission is to create a modern and reliable photography platform that allows users to capture, manage, and showcase their moments with ease.
+                  We focus on combining clean design, smooth functionality, and thoughtful user experience to turn everyday images into meaningful visual stories.
+                </p>
+            </div>
+
+        </div>
+    </section>
+</div>
+{% endblock body %}

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ================= SIDEBAR LAYOUT ================= */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.dashboard {
+    display: flex;
+    width: 100%;
+}
+
+.left-column {
+    width: 250px;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+    width: 250px;
+    background: linear-gradient(180deg, #060d18, #0a1a2f);
+    color: #eaeef3;
+    padding: 25px 20px;
+    height: 700px;
+    border-right: 1px solid rgba(31, 111, 255, 0.25);
+
+    /* ✨ soft idle glow */
+    box-shadow:
+        0 0 20px rgba(31, 111, 255, 0.18),
+        inset 0 0 12px rgba(31, 111, 255, 0.08);
+
+    transition: box-shadow 0.6s ease;
+}
+
+/* ================= TITLE ================= */
+.sidebar h2 {
+    margin-bottom: 25px;
+    text-align: center;
+    color: #eaeef3;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 0 12px rgba(31, 111, 255, 0.35);
+}
+
+.sidebar hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(31, 111, 255, 0.6),
+        transparent
+    );
+    margin-bottom: 25px;
+}
+
+/* ================= MENU ================= */
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+/* ================= LINKS ================= */
+.sidebar ul li a {
+    text-decoration: none;
+    color: #9aa4b2;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 15px;
+
+    /* ✨ smooth motion */
+    transition:
+        background 0.45s ease,
+        color 0.35s ease,
+        box-shadow 0.45s ease,
+        transform 0.35s ease;
+}
+
+/* ================= ICONS ================= */
+.sidebar ul li a i {
+    font-size: 16px;
+    color: #1f6fff;
+    transition: transform 0.4s ease, color 0.3s ease;
+}
+
+/* ================= HOVER ================= */
+.side-hover li a:hover {
+    background: rgba(31, 111, 255, 0.14);
+    color: #eaeef3;
+
+    /* ✨ glow */
+    box-shadow:
+        0 0 18px rgba(31, 111, 255, 0.35),
+        inset 0 0 0 1px rgba(31, 111, 255, 0.3);
+
+    transform: translateX(4px);
+}
+
+.side-hover li a:hover i {
+    transform: scale(1.15);
+    color: #eaeef3;
+}
+
+/* ================= ACTIVE ================= */
+.side-hover li a.active {
+    background: linear-gradient(135deg, #1f6fff, #143e9e);
+    color: #ffffff;
+
+    /* ✨ premium active glow */
+    box-shadow:
+        0 0 28px rgba(31, 111, 255, 0.65),
+        inset 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+.side-hover li a.active i {
+    color: #ffffff;
+}
+
+/* ================= LOGOUT ================= */
+.log-out li a {
+    margin-top: 20px;
+    color: #ff6b6b;
+}
+
+.log-out li a i {
+    color: #ff6b6b;
+}
+
+.log-out li a:hover {
+    background: rgba(255, 107, 107, 0.15);
+    box-shadow:
+        0 0 20px rgba(255, 107, 107, 0.45),
+        inset 0 0 0 1px rgba(255, 107, 107, 0.35);
+    color: #ffffff;
+    transform: translateX(4px);
+}
+</style>
+</head>
+
+<body style="margin-top: 118px;">
+
+<div class="container-1" style="height: 700px;">
+    <div class="container">
+        <div class="dashboard">
+            <div class="left-column">
+                <aside class="sidebar">
+                    <h2>Safe Vault</h2>
+                    <hr>
+
+                    <nav>
+                        <ul>
+                            <span class="side-hover">
+
+                                <li>
+                                    <a href="{% url 'dashboard' %}" class="{{dashboard}}">
+                                        <i class="fa-solid fa-house"></i> Home
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{% url 'upload_img' %}" class="{{upload}}">
+                                        <i class="fa-solid fa-upload"></i> Upload Images
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{% url 'view_img' %}" class="{{view}}">
+                                        <i class="fa-solid fa-image"></i> Gallery
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{% url 'changepass' %}" class="{{changepass}}">
+                                        <i class="fa-solid fa-key"></i> Change Password
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{% url 'newpass' %}" class="{{newpass}}">
+                                        <i class="fa-solid fa-lock"></i> Set New Password
+                                    </a>
+                                </li>
+
+                                <span class="log-out">
+                                    <li>
+                                        <a href="{% url 'logout' %}">
+                                            <i class="fa-solid fa-right-from-bracket"></i> Logout
+                                        </a>
+                                    </li>
+                                </span>
+
+                            </span>
+                        </ul>
+                    </nav>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

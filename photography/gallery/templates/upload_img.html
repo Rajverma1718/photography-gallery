@@ -1,0 +1,213 @@
+{% extends "root.html" %}
+{% load static %}
+
+{% block title %} Upload Page {% endblock title %}
+
+{% block head %}
+
+<style>
+
+    /* ===== GLOBAL BACKGROUND ===== */
+    body {
+        background: radial-gradient(circle at top, #0f2444, #0b0d10 65%);
+        color: #eaeef3;
+    }
+
+    .container {
+        display: flex;
+        height: 100vh;
+    }
+
+    .dashboard {
+        display: flex;
+        width: 100%;
+    }
+
+    .right-column {
+        margin-top: -700px;
+        margin-left: 250px;
+        flex: 1;
+        overflow-y: auto;
+        height: 700px;
+        display: block;
+    }
+
+    /* ===== HEADING ===== */
+    .slide-2 p {
+        text-align: center;
+        font-size: 46px;
+        font-weight: 700;
+        padding-bottom: 10px;
+        margin-top: 15px;
+        color: #8fd3ff;
+        text-shadow: 0 0 18px rgba(31, 111, 255, 0.45);
+    }
+
+    .slide-2 h4 {
+        text-align: center;
+        padding: 6px;
+        font-style: italic;
+        color: #9aa4b2;
+    }
+
+    /* ===== MAIN CONTAINER ===== */
+    .main-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* ===== BORDER CONTAINER ===== */
+    .border-container {
+        width: 820px;
+        margin: 15px;
+        border-radius: 16px;
+        padding: 25px;
+        background: linear-gradient(145deg, #0a1a2f, #060d18);
+        border: 1px solid rgba(31, 111, 255, 0.18);
+        box-shadow:
+            0 25px 60px rgba(0, 0, 0, 0.8),
+            0 0 35px rgba(31, 111, 255, 0.25);
+    }
+
+    /* ===== UPLOAD CARD ===== */
+    .upload-container {
+        background: linear-gradient(145deg, #0c1f36, #050b15);
+        padding: 30px;
+        border-radius: 14px;
+        /* text-align: center; */
+        width: 720px;
+        margin: 20px auto;
+        box-shadow:
+            0 20px 50px rgba(0, 0, 0, 0.85),
+            0 0 30px rgba(31, 111, 255, 0.22);
+        border: 1px solid rgba(31, 111, 255, 0.15);
+    }
+
+    .upload-container p {
+        margin-bottom: 15px;
+        font-size: 25px;
+        text-align: center;
+        font-weight: 700;
+        color: #eaeef3;
+        letter-spacing: 1px;
+    }
+
+    hr {
+        border: none;
+        height: 1px;
+        background: linear-gradient(to right, transparent, #1f6fff, transparent);
+        margin-bottom: 20px;
+    }
+
+    /* ===== FORM LABEL ===== */
+    .fm-container P{
+        text-align: left;
+        font-size: 20px;
+    }
+
+    /* ===== FORM INPUTS ===== */
+    .fm-container input,
+    .fm-container textarea,
+    .fm-container select {
+        background: #050b15;
+        color: #eaeef3;
+        border: 1px solid rgba(31, 111, 255, 0.25);
+        border-radius: 8px;
+        padding: 12px;
+
+        font-size: 15px;
+        width: 100%;
+        margin: 12px 0px 12px -1px;
+        transition: all 0.3s ease;
+    }
+
+    .up-container input:focus,
+    .up-container textarea:focus,
+    .up-container select:focus {
+        outline: none;
+        border-color: #1f6fff;
+        box-shadow: 0 0 12px rgba(31, 111, 255, 0.45);
+    }
+
+    /* ===== UPLOAD BUTTON ===== */
+    .btn {
+    display: flex;
+    justify-content: center; /* centers button horizontally */
+    }
+
+
+    .up-btn {
+        width: 50%;
+        background: linear-gradient(135deg, #1f6fff, #143e9e);
+        color: #ffffff;
+        border: none;
+        padding: 12px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 10px;
+        margin-top: 12px;
+
+        display: flex;
+        justify-content: center; /* horizontal text center */
+        align-items: center;     /* vertical text center */
+
+        box-shadow: 0 0 30px rgba(31, 111, 255, 0.45);
+        transition: all 0.35s ease;
+    }
+
+
+    .up-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 45px rgba(31, 111, 255, 0.75);
+    }
+
+</style>
+
+{% endblock head %}
+
+{% block body %}
+
+{% include "includes/sideandscroll.html" %}
+
+{% block hero %}
+
+<div class="dashboard">
+
+    <div class="right-column">
+
+        <div class="slide-2">
+            <p class="text2">Share your images</p>
+            <h4>Kindly upload your images here</h4>
+            <h4>Thank you for contributing</h4>
+        </div>
+
+        <div class="main-container">
+            <div class="border-container">
+                <div class="upload-container">
+                    <p>UPLOAD YOUR IMAGE</p>
+                    <hr>
+
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="fm-container">
+                            <p>
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                            </p>
+                        </div>
+                        <div class="btn">
+                        <button type="submit" class="up-btn">Start Upload</button>
+                        </div>
+                        
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock hero %}
+{% endblock body %}

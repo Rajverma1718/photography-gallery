@@ -1,0 +1,134 @@
+{% extends "root.html" %}
+{% load static %}
+
+{% block title %} Contect {% endblock title %}
+
+{% block head %}
+<style>
+/* ================= GLOBAL THEME ================= */
+
+:root{
+    --bg-dark:#05010d;
+    --card-bg:rgba(15,2,26,0.85);
+
+    --accent-white: rgb(231, 218, 218);
+    --accent-blue:#3aa9ff;
+    --accent-blue-soft:rgba(58,169,255,0.35);
+
+    --border-soft:rgba(58,169,255,0.35);
+    --text-main:#ffffff;
+    --text-muted:#b0b0b0;
+
+}
+
+/* BACKGROUND */
+body{
+    background:radial-gradient(circle at center,#0f1a2e 0%,#05010d 100%);
+    background-attachment:fixed;
+    color:var(--text-main);
+}
+
+/* ================= CONTACT CARD ================= */
+
+.contect_info{
+    width:50%;
+    margin:auto;
+    margin-top:140px;
+    text-align:center;
+    padding:45px 35px;
+
+    background:var(--card-bg);
+    backdrop-filter:blur(18px);
+
+    border-radius:24px;
+    border:1px solid var(--border-soft);
+
+    box-shadow:
+        0 40px 90px rgba(0,0,0,0.85),
+        0 0 55px var(--accent-blue-soft),
+        inset 0 0 18px var(--glass-inner);
+
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.contect_info span{
+    color: white;
+}
+
+/* HEADINGS */
+.contect_info .header-txt{
+    font-size:26px;
+    margin:25px 0 15px;
+    color:var(--accent-green);
+    letter-spacing:1px;
+}
+
+/* H3 */
+.contect_info h3{
+    font-size:20px;
+    margin:25px 0 15px;
+    color:var(--accent-blue);
+    letter-spacing:1px;
+}
+
+/* TEXT */
+.contect_info p span{
+    font-size: 20px;
+    color:var(--text-muted);
+    margin:10px 0;
+    line-height:1.8;
+}
+
+/* HIGHLIGHT TEXT */
+.contect_info span{
+    color:var(--text-muted);
+    font-weight:600;
+    text-shadow:0 0 12px rgba(58,169,255,0.6);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .contect_info{
+        width:85%;
+        margin-top:100px;
+    }
+}
+</style>
+{% endblock head %}
+
+{% block body %}
+
+<div class="container-1" style="height:700px; margin-top:170px;">
+    <div class="contect_info">
+
+        <h1 class="header-txt">Our Location</h1>
+        <h3><b>Address:</b><br>
+            <span>
+                Green Valley Apartments,<br>
+                Flat No. 304,<br>
+                Sunshine Street,<br>
+                Andheri (West),<br>
+                Mumbai: 400058
+            </span>
+        </h3>
+
+        <h1 class="header-txt">Contact Information</h1>
+        <h3><b>Phone Number:</b>
+            <span>+91 8976114603 / 8291670731</span>
+        </h3>
+        <h3><b>Email Address:</b>
+            <span>safevault1718@gmail.com</span>
+        </h3>
+
+        <h1 class="header-txt">Opening Hours</h1>
+        <h3><b>Monday to Friday:</b>
+            <span>10:00 AM to 11:00 PM</span>
+        </h3>
+        <h3><b>Saturday and Sunday:</b>
+            <span>11:00 AM to 9:00 PM</span>
+        </h3>
+
+    </div>
+</div>
+
+{% endblock body %}

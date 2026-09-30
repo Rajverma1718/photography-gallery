@@ -1,0 +1,133 @@
+{% extends "root.html" %}
+{% load static %}
+
+{% block title %} Sign Up {% endblock title %}
+
+{% block head %}
+<style>
+/* ===== PAGE BACKGROUND ===== */
+body {
+    background: #0f0f0f;
+    color: #eaeaea;
+}
+
+/* ===== FORM CONTAINER ===== */
+.form-container {
+    background: #000000;
+    padding: 50px;
+    border-radius: 14px;
+    box-shadow: 0 0 25px rgba(0, 200, 83, 0.25);
+    width: 100%;
+    max-width: 550px;
+    margin: 170px auto;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* ===== HEADING ===== */
+.sign_up {
+    font-size: 28px;
+    text-align: center;
+    font-weight: 700;
+    color: #00c853;
+    margin-bottom: 25px;
+}
+
+/* ===== INPUT GROUP ===== */
+.input-group label {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 6px;
+    color: #cfcfcf;
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    margin: 5px 0px 5px 0px;
+    padding: 12px;
+    font-size: 15px;
+    border: 1px solid #2e2e2e;
+    border-radius: 6px;
+    outline: none;
+    background: #121212;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #00c853;
+    box-shadow: 0 0 6px rgba(0, 200, 83, 0.6);
+}
+
+/* ===== BUTTON ===== */
+.submit-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    font-size: 16px;
+    color: #000000;
+    background: #00c853;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #00a846;
+}
+
+/* ===== LINK ===== */
+.signup-link {
+    margin-top: 18px;
+    font-size: 14px;
+    color: #bdbdbd;
+    text-align: center;
+}
+
+.signup-link a {
+    color: #00c853;
+    text-decoration: none;
+    font-weight: 600;
+
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* ===== ERROR ===== */
+.sign-error {
+    color: #ff5252;
+    font-size: 14px;
+}
+</style>
+{% endblock head %}
+
+{% block body %}
+
+<div class="form-container">
+    <p class="sign_up">Create Account</p>
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+
+        {% for fm in form %}
+        <div class="input-group">
+            {{ fm.label_tag }}
+            <span class="sign-error">{{ fm.errors|striptags }}</span>
+            {{ fm }}
+        </div>
+        {% endfor %}
+
+        <button type="submit" class="submit-btn">Sign Up</button>
+
+        <p class="signup-link">
+            Already have an account?
+            <a href="{% url 'login' %}">Login</a>
+        </p>
+    </form>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,224 @@
+{% extends "root.html" %}
+{% load static %}
+
+
+{% block title %} Upload Page {% endblock title %}
+
+{% block head %}
+
+
+
+<style>
+    .container {
+        display: flex;
+        height: 100vh;
+
+    }
+
+    .dashboard {
+        display: flex;
+        width: 100%;
+    }
+
+
+    .right-column {
+        margin-top: -700px;
+        margin-left: 250px;
+        flex: 1;
+        overflow-y: auto;
+        height: 700px;
+        display: block;
+
+    }
+
+
+
+    h1 {
+        color: white;
+    }
+
+    .slide-2 p {
+        text-align: center;
+        font-size: 50px;
+        font-weight: bold;
+        padding-bottom: 10px;
+
+        text-shadow: 2px 2px 5px #2c3e50;
+        margin-top: 15px;
+
+    }
+
+    .slide-2 h4 {
+        text-align: center;
+        padding: 10px;
+        font-style: italic;
+    }
+
+    .main-container {
+        justify-content: center;
+        display: flex;
+    }
+
+
+    .border-container {
+        border: 2px solid black;
+        width: 800px;
+        text-align: center;
+        margin: 10px;
+
+        border-radius: 10px;
+        border-style: dotted;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        justify-content: center;
+    }
+
+
+
+    .upload-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 700px;
+        margin-top: 20px;
+        margin-left: 45px;
+        margin-bottom: 20px;
+        display: block;
+    }
+
+     .upload-container a{
+        color: rgba(228, 58, 58, 0.884);
+    
+    }
+
+    .upload-container p {
+        margin-bottom: 20px;
+        font-size: larger;
+        font-weight: bold;
+        color: black;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .upload-container .text-center {
+        color: #2c3e50;
+        font-size: 25px;
+    }
+
+
+    .botton-container .btn {
+        width: 100%;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+        margin-top: 5px;
+        width: 30%;
+        display: inline;
+    }
+
+    .botton-container .edit-btn {
+        background-color: rgb(37, 153, 37);
+    }
+
+    .botton-container .edit-btn:hover {
+        background-color: rgba(37, 153, 37, 0.829);
+    }
+
+    .botton-container .back-btn {
+        background-color: rgb(177, 123, 25);
+    }
+
+    .botton-container .back-btn:hover {
+        background-color: rgba(177, 124, 25, 0.815);
+    }
+
+    .up-container .title-control {
+        width: 30%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 10px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .up-container .post-control {
+        width: 100%;
+        margin-top: 10px;
+        padding: 10px;
+        height: 80px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .up-container .image-control {
+        width: 50%;
+        margin: 10px;
+        padding: 10px;
+        font-size: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    
+
+
+</style>
+
+
+{% endblock head %}
+
+
+
+{% block body %}
+
+{% include "includes/sideandscroll.html" %}
+
+{% block hero %}
+
+
+
+
+
+
+<div class="dashboard">
+
+
+    <div class="right-column">
+        <br>
+        <div class="main-container">
+            <div class="border-container">
+                <div class="upload-container">
+                    <p class="text-center">EDIT YOUR DATA</p>
+                    <hr>
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="up-container">
+                        {% csrf_token %}
+
+                        {{ form.as_p }}
+                    </form>
+                    <div class="botton-container">
+                        <button type="submit" class="btn edit-btn">Edit and Save</button>
+                        <a href="{% url 'view_img' %}" class="btn back-btn">Back</a>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+</div>
+
+{% endblock hero %}
+
+{% endblock body %}
